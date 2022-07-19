@@ -1,4 +1,6 @@
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -17,13 +19,17 @@ public class main {
         System.out.println(listaDeFilmes.size());
 
         for (Map<String, String> filmes : listaDeFilmes) {
+            InputStream inputStream = new URL(filmes.get("image")).openStream();
+
+            var geradora = new GeradoraDeFigurinhas();
+            geradora.cria(inputStream,filmes.get("title")+".png");
+
             System.out.println("Titulo: " + filmes.get("title"));
-            System.out.println("Url: " + filmes.get("image"));
-            System.out.println("Rating: "+ filmes.get("imDbRating"));
-            for (int i = 0; i <= Float.parseFloat(filmes.get("imDbRating"))-1; i++){
-                System.out.printf("*");
-            }
-            System.out.println();
+//            System.out.println("Rating: "+ filmes.get("imDbRating"));
+//            for (int i = 0; i <= Float.parseFloat(filmes.get("imDbRating"))-1; i++){
+//                System.out.printf("*");
+//            }
+//            System.out.println();
         }
     }
 }
