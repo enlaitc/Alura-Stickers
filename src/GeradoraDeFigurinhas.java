@@ -28,7 +28,7 @@ public class GeradoraDeFigurinhas {
 
         if (!new File("saida").exists()) new File("saida").mkdir();
 
-        ImageIO.write(novaImagem, "png", new File("saida/"+nomeArquivo));
+        ImageIO.write(novaImagem, "png", new File(nomeArquivo));
     }
 
 }
