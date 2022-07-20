@@ -9,8 +9,9 @@ public class JsonParser {
 
     private static final Pattern REGEX_ITEMS = Pattern.compile(".*\\[(.+)\\].*");
     private static final Pattern REGEX_ATRIBUTOS_JSON = Pattern.compile("\"(.+?)\":\"(.*?)\"");
+    private static final Pattern REGEX_URL = Pattern.compile("(.+)\\._");
 
-    public List<Map<String,String>> parse(String json){
+    public List<Map<String, String>> parse(String json) {
         Matcher matcher = REGEX_ITEMS.matcher(json);
         if (!matcher.find()) {
 
@@ -37,4 +38,15 @@ public class JsonParser {
 
         return dados;
     }
+
+    public String urlParse(String url) {
+        Matcher matcher = REGEX_URL.matcher(url);
+        if (!matcher.find()) {
+
+            throw new IllegalArgumentException("Não s items.");
+        }
+        return matcher.group(1);
+
+    }
+
 }
