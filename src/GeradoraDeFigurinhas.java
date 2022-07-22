@@ -9,7 +9,15 @@ public class GeradoraDeFigurinhas {
     public void cria(InputStream inputStream, String nomeArquivo, String frase) throws Exception {
 
         BufferedImage bufferedImage = ImageIO.read(inputStream);
-        Image imagemOriginal = bufferedImage.getScaledInstance(600,1000, Image.SCALE_DEFAULT);
+        Image imagemOriginal;
+
+        if (bufferedImage.getHeight() - 100 > bufferedImage.getWidth()) {
+            imagemOriginal = bufferedImage.getScaledInstance(600, 1000, Image.SCALE_DEFAULT);
+        } else if (bufferedImage.getHeight() + 100 < bufferedImage.getWidth()) {
+            imagemOriginal = bufferedImage.getScaledInstance(900, 700, Image.SCALE_DEFAULT);
+        } else {
+            imagemOriginal = bufferedImage.getScaledInstance(600, 600, Image.SCALE_DEFAULT);
+        }
 
         int altura = imagemOriginal.getHeight(null);
         int largura = imagemOriginal.getWidth(null);
@@ -24,7 +32,7 @@ public class GeradoraDeFigurinhas {
 
         FontMetrics fm = graphics.getFontMetrics();
 
-        graphics.drawString(frase, (largura/2)-(fm.stringWidth(frase)/2), (novaAltura - 50) - (fm.getHeight()/2));
+        graphics.drawString(frase, (largura / 2) - (fm.stringWidth(frase) / 2), (novaAltura - 50) - (fm.getHeight() / 2));
 
         if (!new File("saida").exists()) new File("saida").mkdir();
 

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ExtratorDeConteudoDoImdb implements ExtratorDeConteudo{
+public class ExtratorDeConteudoDeLinguagens implements ExtratorDeConteudo{
 
     public List<Conteudo> extrai(String json) {
 
@@ -13,8 +13,8 @@ public class ExtratorDeConteudoDoImdb implements ExtratorDeConteudo{
 
         for (Map<String, String> atributos : listaDeAtributos) {
             String titulo = atributos.get("title");
-            String url = parser.urlParse(atributos.get("image"));
-            String texto = atributos.get("imDbRating");
+            String url = atributos.get("image");
+            String texto = atributos.get("ranking");
             conteudos.add(new Conteudo(titulo, url, texto));
         }
         return conteudos;

@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ExtratorDeConteudoDaNasa implements ExtratorDeConteudo{
+public class ExtratorDeConteudoDaNasa implements ExtratorDeConteudo {
 
-    public List<Conteudo> extrai(String json){
+    public List<Conteudo> extrai(String json) {
 
         JsonParser parser = new JsonParser();
         List<Map<String, String>> listaDeAtributos = parser.parse(json);
@@ -14,7 +14,8 @@ public class ExtratorDeConteudoDaNasa implements ExtratorDeConteudo{
         for (Map<String, String> atributos : listaDeAtributos) {
             String titulo = atributos.get("title");
             String url = atributos.get("url");
-            conteudos.add(new Conteudo(titulo,url));
+            String texto = atributos.get("date");
+            conteudos.add(new Conteudo(titulo, url, texto));
         }
         return conteudos;
     }

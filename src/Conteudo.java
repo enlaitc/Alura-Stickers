@@ -1,19 +1,33 @@
-public class Conteudo {
+public record Conteudo(String titulo, String urlImage, String texto) {
 
-    private String titulo;
-    private String urlImage;
+    public Conteudo(String titulo, String urlImage, String texto){
 
-
-    public Conteudo(String titulo, String urlImage){
         this.titulo = titulo;
         this.urlImage = urlImage;
+        this.texto = texto;
+
     }
 
-    public String getTitulo(){
-        return titulo;
-    }
+//    private String titulo;
+//    private String urlImage;
+//    private String texto;
 
-    public String getUrlImage(){
-        return urlImage;
-    }
+
+//    public Conteudo(String titulo, String urlImage, String texto) {
+//        this.titulo = titulo;
+//        this.urlImage = urlImage;
+//        this.texto = texto;
+//    }
+
+//    public String getTitulo() {
+//        return titulo;
+//    }
+//
+//    public String getUrlImage() {
+//        return urlImage;
+//    }
+//
+//    public String getTexto() {
+//        return texto;
+//    }
 }
